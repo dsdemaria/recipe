@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 
+export const secondsToMinutes = (totalSeconds) => {
+  let minutes = Math.floor(totalSeconds / 60);
+  let seconds = totalSeconds % 60;
+  seconds = seconds > 9 ? '' + seconds : '0' + seconds;
+  let result = `${minutes}:${seconds}`
+  return result;
+}
 
 export default class Timer extends Component {
   constructor(props) {
@@ -7,15 +14,7 @@ export default class Timer extends Component {
     this.state = {
       totalSeconds: this.props.seconds,
       isActive: false,
-      buttonStatus: 'Start Timer',
     }
-  }
-  secondsToMinutes(totalSeconds) {
-    let minutes = Math.floor(totalSeconds / 60);
-    let seconds = totalSeconds % 60;
-    seconds = seconds > 9 ? '' + seconds : '0' + seconds;
-    let result = `${minutes}:${seconds}`
-    return result;
   }
   toggleTimer() {
     let timer = setInterval(() => {
@@ -41,8 +40,8 @@ export default class Timer extends Component {
   render() {
     return(
       <div>
-        <span>{this.secondsToMinutes(this.state.totalSeconds)}</span>
-        <button onClick={this.toggleTimer.bind(this)}>{this.state.isActive ? 'Stop' : 'Start'}</button>
+        <span>{secondsToMinutes(this.state.totalSeconds)}</span>
+        <button onClick={this.toggleTimer.bind(this)}>{this.state.isActive ? '❚❚' : '►'}</button>
       </div>
     );
   }
