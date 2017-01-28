@@ -28,7 +28,8 @@ const pStyle = {
 const finishedStyle = {
   display: 'flex',
   justifyContent: 'center',
-  background: 'red',
+  background: 'black',
+  color: 'white',
 }
 const spanStyle = {
   paddingRight: '12px',
@@ -39,17 +40,24 @@ const timerStyle = {
 }
 
 class Timer extends Component {
-  constructor(props) {
+  constructor(props, timer) {
     super(props);
+    this.timer = timer;
     this.state = {
       totalSeconds: this.props.seconds,
       isActive: false,
     }
+    this.toggleTimer = this.toggleTimer.bind(this)
+  }
+  componentDidUpdate() {
+    if (!this.state.totalSeconds ) {
+      clearInterval(this.timer);
+    }
   }
   toggleTimer() {
-    let timer = setInterval(() => {
-      if (this.state.isActive === false) {
-        clearInterval(timer);
+    this.timer = setInterval(() => {
+      if (!this.state.isActive) {
+        clearInterval(this.timer);
       } else {
         this.setState({
           totalSeconds: this.state.totalSeconds - 1
@@ -75,14 +83,14 @@ class Timer extends Component {
         </div>
       );
     }
-    return(
+    return (
       <div>
         <p style={pStyle}>{this.props.title}</p>
         <div style={timerStyle}>
           <span style={spanStyle}>{secondsToMinutes(this.state.totalSeconds)}</span>
           <button
             style={btnStyle}
-            onClick={this.toggleTimer.bind(this)}>
+            onClick={this.toggleTimer}>
             {this.state.isActive ? '❚❚' : '►'}
           </button>
         </div>

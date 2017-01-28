@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Radium from 'radium';
 import Ingredients from './Ingredients';
 import AtAGlance from './AtAGlance';
 
@@ -8,7 +9,7 @@ const articleStyle = {
   width: '600px',
   fontSize: '1.25rem',
   lineHeight: '2.25rem',
-  margin: '0 auto',
+  margin: '20px auto',
 }
 const rowStyle = {
   display: 'flex',
