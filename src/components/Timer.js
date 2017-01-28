@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Radium from 'radium';
 
 export const secondsToMinutes = (totalSeconds) => {
   let minutes = Math.floor(totalSeconds / 60);
@@ -8,7 +9,36 @@ export const secondsToMinutes = (totalSeconds) => {
   return result;
 }
 
-export default class Timer extends Component {
+const btnStyle = {
+  padding: '10px 24px',
+  fontSize: '1rem',
+  background: 'white',
+  border: '2px solid black',
+  ':hover': {
+    background: 'black',
+    color: 'white',
+    cursor: 'pointer',
+  }
+}
+const pStyle = {
+  textAlign: 'center',
+  fontSize: '.8rem',
+  margin: '0',
+}
+const finishedStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  background: 'red',
+}
+const spanStyle = {
+  paddingRight: '12px',
+}
+const timerStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+}
+
+class Timer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,11 +68,28 @@ export default class Timer extends Component {
       })
   }
   render() {
+    if (this.state.totalSeconds === 0) {
+      return (
+        <div style={finishedStyle}>
+          <p>{this.props.title} complete!</p>
+        </div>
+      );
+    }
     return(
       <div>
-        <span>{secondsToMinutes(this.state.totalSeconds)}</span>
-        <button onClick={this.toggleTimer.bind(this)}>{this.state.isActive ? '❚❚' : '►'}</button>
+        <p style={pStyle}>{this.props.title}</p>
+        <div style={timerStyle}>
+          <span style={spanStyle}>{secondsToMinutes(this.state.totalSeconds)}</span>
+          <button
+            style={btnStyle}
+            onClick={this.toggleTimer.bind(this)}>
+            {this.state.isActive ? '❚❚' : '►'}
+          </button>
+        </div>
+        <hr />
       </div>
     );
   }
 }
+
+export default Radium(Timer);
