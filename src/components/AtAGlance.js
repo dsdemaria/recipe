@@ -14,7 +14,6 @@ const styles = {
     textTransform: 'uppercase',
   },
   wrapper: {
-    width: '100%',
     border: '2px solid black',
   }
 }
@@ -24,7 +23,6 @@ export default class AtAGlance extends Component {
     return (
       <div style={styles.wrapper}>
         <p style={styles.title}>At a glance</p>
-        <Timer title={'Test'} seconds={3} />
         <Timer title={'Proof Yeast'} seconds={1500} />
         <Timer title={'Knead Dough'} seconds={60*15} />
         <Timer title={'Let Rise'} seconds={60*30} />

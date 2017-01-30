@@ -4,7 +4,6 @@ import Radium from 'radium';
 const styles = {
   ul: {
     listStyle: 'none',
-    width: '90%',
     padding: '0px',
     fontSize: '.8rem',
   },
