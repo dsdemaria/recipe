@@ -9,35 +9,46 @@ export const secondsToMinutes = (totalSeconds) => {
   return result;
 }
 
-const btnStyle = {
-  padding: '10px 24px',
-  fontSize: '1rem',
-  background: 'white',
-  border: '2px solid black',
-  ':hover': {
-    background: 'black',
-    color: 'white',
-    cursor: 'pointer',
+const styles = {
+  button: {
+    padding: '10px 24px',
+    fontSize: '1rem',
+    background: 'white',
+    border: '2px solid black',
+    ':hover': {
+      background: 'black',
+      color: 'white',
+      cursor: 'pointer',
+    }
+  },
+  timer: {
+    borderLeft: '1px solid black',
+    marginLeft: '12px',
+    display: 'flex',
+    justifyContent: 'center',
+    paddingLeft: '12px',
+    finished: {
+      display: 'flex',
+      justifyContent: 'center',
+      background: 'black',
+      color: 'white',
+    }
+  },
+  titleWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    marginRight: '12px',
+    textAlign: 'center',
+    p: {
+      fontSize: '.8rem',
+      margin: '0',
+      lineHeight: '1rem',
+    },
   }
 }
-const pStyle = {
-  textAlign: 'center',
-  fontSize: '.8rem',
-  margin: '0',
-}
-const finishedStyle = {
-  display: 'flex',
-  justifyContent: 'center',
-  background: 'black',
-  color: 'white',
-}
-const spanStyle = {
-  paddingRight: '12px',
-}
-const timerStyle = {
-  display: 'flex',
-  justifyContent: 'center',
-}
+
+
 
 class Timer extends Component {
   constructor(props, timer) {
@@ -78,23 +89,22 @@ class Timer extends Component {
   render() {
     if (this.state.totalSeconds === 0) {
       return (
-        <div style={finishedStyle}>
+        <div style={styles.timer.finished}>
           <p>{this.props.title} complete!</p>
         </div>
       );
     }
     return (
-      <div>
-        <p style={pStyle}>{this.props.title}</p>
-        <div style={timerStyle}>
-          <span style={spanStyle}>{secondsToMinutes(this.state.totalSeconds)}</span>
-          <button
-            style={btnStyle}
-            onClick={this.toggleTimer}>
-            {this.state.isActive ? '❚❚' : '►'}
-          </button>
+      <div style={styles.timer}>
+        <div style={styles.titleWrapper}>
+          <p style={styles.titleWrapper.p}>{this.props.title}</p>
+          <span>{secondsToMinutes(this.state.totalSeconds)}</span>
         </div>
-        <hr />
+        <button
+          style={styles.button}
+          onClick={this.toggleTimer}>
+          {this.state.isActive ? '❚❚' : '►'}
+        </button>
       </div>
     );
   }

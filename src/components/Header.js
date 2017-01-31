@@ -1,55 +1,54 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Radium from 'radium';
 
-const siteHeader = {
-  background: '#1A237E',
-  color: 'white',
-  display: 'flex',
-}
-const titleStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  color: '#E8EAF6',
-  textDecoration: 'none',
-  fontWeight: 'bold',
-  fontSize: '0.8rem',
-  padding: '12px',
-}
-const siteNavUl = {
-  margin: '0',
-  listStyle: 'none',
-  display: 'flex',
-  flexDirection: 'row',
-}
-const siteNavUlLiA = {
-  color: '#E8EAF6',
-  textDecoration: 'none',
-  padding: '18px',
-  display: 'inline-block',
-}
-const siteNavUlLiAactive = {
-  color: '#E3F2FD',
-  background: '#2196F3',
-  textDecoration: 'none',
-  fontWeight: 'bold',
-  padding: '18px',
-  display: 'inline-block',
-}
-
-class Header extends Component {
-  render() {
-    return (
-      <header style={siteHeader}>
-        <a href="#0" style={titleStyle}>Recipe Book!</a>
-        <nav>
-          <ul style={siteNavUl}>
-            <li><a style={siteNavUlLiAactive} href="#">Recipes</a></li>
-            <li><a style={siteNavUlLiA} href="#">Pantry</a></li>
-            <li><a style={siteNavUlLiA} href="#">Cookware</a></li>
-          </ul>
-        </nav>
-      </header>
-    );
+const styles = {
+  header: {
+    background: 'black',
+    color: 'white',
+    display: 'flex',
+  },
+  title: {
+    display: 'flex',
+    alignItems: 'center',
+    color: 'white',
+    textDecoration: 'none',
+    fontWeight: 'bold',
+    fontSize: '0.8rem',
+    padding: '12px',
+  },
+  navUl: {
+    margin: '0',
+    listStyle: 'none',
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  navLi: {
+    color: 'white',
+    textDecoration: 'none',
+    padding: '18px',
+    display: 'inline-block',
+    active: {
+      color: 'white',
+      background: 'LightGray',
+      textDecoration: 'none',
+      fontWeight: 'bold',
+      padding: '18px',
+      display: 'inline-block',
+    }
   }
 }
 
-export default Header;
+const Header = () => (
+  <header style={styles.header}>
+    <a href="#0" style={styles.title}>Recipe Book!</a>
+    <nav>
+      <ul style={styles.navUl}>
+        <li><a style={styles.navLi.active} href="#">Recipes</a></li>
+        <li><a style={styles.navLi} href="#">Pantry</a></li>
+        <li><a style={styles.navLi} href="#">Cookware</a></li>
+      </ul>
+    </nav>
+  </header>
+)
+
+export default Radium(Header);

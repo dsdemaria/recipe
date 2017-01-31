@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Radium from 'radium';
 
 const styles = {
   base: {
-    width: '65%'
+    width: '74%'
   }
 }
 
