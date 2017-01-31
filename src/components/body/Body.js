@@ -13,7 +13,7 @@ const styles = {
     width: '800px',
     fontSize: '1.25rem',
     lineHeight: '2.25rem',
-    margin: '20px auto',
+    margin: '0 auto',
   },
   h1: {
     textAlign: 'center',
@@ -26,7 +26,7 @@ const styles = {
 
 const Body = (props) => (
   <article style={styles.article}>
-    <h1 style={styles.h1}>&#127829; Pizza &#127829;</h1>
+    <h1 style={styles.h1}>&#127829; Pizza! &#127829;</h1>
     <div style={styles.row}>
       <LeftColumn>
         <Ingredients />

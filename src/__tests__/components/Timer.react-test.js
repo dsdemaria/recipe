@@ -1,6 +1,5 @@
-
-import { secondsToMinutes } from '../../components/Timer';
+import { _secondsToMinutes } from '../../components/body/Timer';
 
 it('Converts seconds to minutes', () => {
-  expect(secondsToMinutes(1500)).toEqual('25:00')
+  expect(_secondsToMinutes(1500)).toEqual('25:00')
 })

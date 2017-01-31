@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 
-export const secondsToMinutes = (totalSeconds) => {
+export const _secondsToMinutes = (totalSeconds) => {
   let minutes = Math.floor(totalSeconds / 60);
   let seconds = totalSeconds % 60;
   seconds = seconds > 9 ? '' + seconds : '0' + seconds;
   let result = `${minutes}:${seconds}`
   return result;
 }
-
 const styles = {
   button: {
     padding: '10px 24px',
@@ -48,43 +47,43 @@ const styles = {
   }
 }
 
-
-
 class Timer extends Component {
-  constructor(props, timer) {
+  constructor(props) {
     super(props);
-    this.timer = timer;
     this.state = {
-      totalSeconds: this.props.seconds,
+      totalSeconds: props.seconds,
       isActive: false,
+      intervalID: null,
     }
+    this.timer = this.timer.bind(this)
     this.toggleTimer = this.toggleTimer.bind(this)
   }
-  componentDidUpdate() {
-    if (!this.state.totalSeconds ) {
-      clearInterval(this.timer);
+  // creates and clears interval based on isActive status
+  toggleTimer() {
+    if (this.state.isActive) {
+      clearInterval(this.state.intervalID);
+      this.setState({
+        isActive: !this.state.isActive,
+        intervalID: null,
+      });
+    } else {
+      const intervalID = setInterval(this.timer, 1000)
+      this.setState({
+        isActive: !this.state.isActive,
+        intervalID: intervalID,
+      });
     }
   }
-  toggleTimer() {
-    this.timer = setInterval(() => {
-      if (!this.state.isActive) {
-        clearInterval(this.timer);
-      } else {
-        this.setState({
-          totalSeconds: this.state.totalSeconds - 1
-        })
-      }
-    }, 1000);
-    !this.state.isActive ?
+  // timer only handles decreasing state by one
+  timer() {
+    let newCount = this.state.totalSeconds - 1
+    if (newCount >= 0) {
       this.setState({
-        isActive: true,
-        buttonStatus: 'Pause Timer',
-      })
-    :
-      this.setState({
-        isActive: false,
-        buttonStatus: 'Start Timer',
-      })
+        totalSeconds: newCount
+      });
+    } else {
+      clearInterval(this.state.intervalID); // prevents timer going below 0 seconds
+    }
   }
   render() {
     if (this.state.totalSeconds === 0) {
@@ -98,7 +97,7 @@ class Timer extends Component {
       <div style={styles.timer}>
         <div style={styles.titleWrapper}>
           <p style={styles.titleWrapper.p}>{this.props.title}</p>
-          <span>{secondsToMinutes(this.state.totalSeconds)}</span>
+          <span>{_secondsToMinutes(this.state.totalSeconds)}</span>
         </div>
         <button
           style={styles.button}
@@ -111,3 +110,27 @@ class Timer extends Component {
 }
 
 export default Radium(Timer);
+
+//
+// toggleTimer() {
+//   const newCount = this.state.totalSeconds - 1
+//   this.timer = setInterval(() => {
+//     if (!this.state.isActive) {
+//       clearInterval(this.timer);
+//     } else {
+//       this.setState({
+//         totalSeconds: newCount
+//       })
+//     }
+//   }, 1000);
+//   !this.state.isActive ?
+//     this.setState({
+//       isActive: true,
+//       buttonStatus: 'Pause Timer',
+//     })
+//   :
+//     this.setState({
+//       isActive: false,
+//       buttonStatus: 'Start Timer',
+//     })
+// }
