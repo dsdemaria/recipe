@@ -1,0 +1,84 @@
+{
+  "instructions": [
+    {
+      "id": 1,
+      "instruction": "Dissolve the sugar, 1 tbsp of bread flour, and yeast in the lukewarm water (about 90 degrees F.). Proof for 25 minutes.",
+      "timer": {
+        "seconds": 1500,
+        "title": "Proof Dough",
+        "isActive":  false,
+        "intervalID": null
+      }
+    },
+    {
+      "id": 2,
+      "instruction": "Add the flour, starting with 2  cups flour and adding more as necessary to make a soft, smooth dough.",
+      "timer": false
+    },
+    {
+      "id": 3,
+      "instruction": "Knead the dough (with your hands, a mixer, or your bread machine set on the dough cycle) until it is smooth and elastic, about 10 minutes.",
+      "timer": {
+        "seconds": 600,
+        "title": "Knead",
+        "isActive":  false,
+        "intervalID": null
+      }
+    },
+    {
+      "id": 4,
+      "instruction": "Place the dough in a lightly greased bowl or other container, cover it, and let it rise for 1 to 2 hours.",
+      "timer": {
+        "seconds": 3600,
+        "title": "Let Rise",
+        "isActive":  false,
+        "intervalID": null
+      }
+    },
+    {
+      "id": 5,
+      "instruction": "Gently deflate the dough, and divide it into two pieces, for medium-crust pizza; or one for thicker crusts. Roll each piece, on a floured surface, with a floured rolling pin, into a circle to fit a 12 inch pizza pan. To roll, work from the center to the outside like pie dough. Let the dough rest several times to relax it and make it more cooperative. Turn it over from time to time and roll the reverse side.",
+      "timer": false
+    },
+    {
+      "id": 6,
+      "instruction": "Place the rounds on pizza pans; on baking sheets; or, if you have a pizza stone in your oven, on parchment.",
+      "timer": false
+    },
+    {
+      "id": 7,
+      "instruction": "Preheat your oven to 450°F. While it's heating, get out your toppings, which you've prepared ahead. Some possibilities include sliced pepperoni; sautéed mushroooms, onions, or peppers; cooked meats; olives; and grated or shredded cheese.",
+      "timer": false
+    },
+    {
+      "id": 8,
+      "instruction": "Brush each crust with a bit of olive oil; spread pizza or spaghetti sauce lightly over the surface, and let your guests add their favorite toppings. Sprinkle the top with grated cheese.",
+      "timer": false
+    },
+    {
+      "id": 9,
+      "instruction": "Bake the pizzas for 15 to 20 minutes, until they are golden brown, the toppings are hot and bubbly, and the cheese is melted. Remove the pizzas from the oven.",
+      "timer": {
+        "seconds": 900,
+        "title": "Bake",
+        "isActive":  false,
+        "intervalID": null
+      }
+    },
+    {
+      "id": 10,
+      "instruction": "Immediately transfer pizzas to a cooling rack, so their bottoms do not get soggy. After about 10 minutes (to allow the toppings to set), slice and serve; a pair of scissors is a great cutting tool.",
+      "timer": {
+        "seconds": 600,
+        "title": "Cool",
+        "isActive":  false,
+        "intervalID": null
+      }
+    },
+    {
+      "id": 11,
+      "instruction": "Yield: 1-2 pizzas, 3-4 servings. Enjoy!",
+      "timer": false
+    }
+  ]
+}

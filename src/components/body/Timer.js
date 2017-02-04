@@ -110,27 +110,3 @@ class Timer extends Component {
 }
 
 export default Radium(Timer);
-
-//
-// toggleTimer() {
-//   const newCount = this.state.totalSeconds - 1
-//   this.timer = setInterval(() => {
-//     if (!this.state.isActive) {
-//       clearInterval(this.timer);
-//     } else {
-//       this.setState({
-//         totalSeconds: newCount
-//       })
-//     }
-//   }, 1000);
-//   !this.state.isActive ?
-//     this.setState({
-//       isActive: true,
-//       buttonStatus: 'Pause Timer',
-//     })
-//   :
-//     this.setState({
-//       isActive: false,
-//       buttonStatus: 'Start Timer',
-//     })
-// }
